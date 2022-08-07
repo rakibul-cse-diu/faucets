@@ -10,6 +10,7 @@ import Home from './components/Home/Home';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
 import Profile from './components/Profile/Profile';
+import Footer from './components/Footer/Footer';
 function App() {
   const [wallet, setWallet] = useState(walletData[0]);
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/profile' element={<Profile />} />
       </Routes>
-      {/* <h1 className='bg-gradient-to-r from-primary to-secondary'>Hellow faucets</h1> */}
+      <Footer />
     </div>
   );
 }
