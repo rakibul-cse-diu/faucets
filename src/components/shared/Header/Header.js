@@ -9,9 +9,9 @@ const Header = ({ wallet, setWallet }) => {
     return (
         <div class="navbar bg-base-100">
             <div class="flex-1">
-                <Link to="/">
+                <a href='#'>
                     <span class="btn btn-ghost normal-case text-2xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Faucets</span>
-                </Link>
+                </a>
             </div>
             <div class="flex-none">
                 <div class="dropdown dropdown-end border-[2px] border-[#D6D6D6] rounded-md">
@@ -67,8 +67,8 @@ const Header = ({ wallet, setWallet }) => {
                                 </span>
                             </Link>
                         </li>
-                        <li><Link to="/">Sign In</Link></li>
-                        <li><Link to="/">Sign Up</Link></li>
+                        <li><Link to="/signin">Sign In</Link></li>
+                        <li><Link to="/signup">Sign Up</Link></li>
                     </ul>
                 </div>
             </div>
