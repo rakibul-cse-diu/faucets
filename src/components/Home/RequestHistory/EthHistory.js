@@ -3,8 +3,8 @@ import React from 'react';
 const EthHistory = () => {
     return (
         <div className='mt-3'>
-            <div class="overflow-x-auto">
-                <table class="table table-compact w-full">
+            <div className="overflow-x-auto">
+                <table className="table table-compact w-full">
                     <thead>
                         <tr className=' text-white text-center'>
                             <th className='capitalize bg-gradient-to-b from-primary to-secondary'>Sr.</th>
