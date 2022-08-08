@@ -17,13 +17,12 @@ const SignIn = () => {
             email,
             password
         }
-
         try {
+            // send user data to the server for login
             const data = await axios.get(`https://vast-mountain-66122.herokuapp.com/signin?email=${userData.email}&password=${userData.password}`);
             console.log("data ", data)
             setError(false)
             toast.success("Successfully Sign in");
-
         } catch (error) {
             setError(true)
             setErrorMsg(error.response.data.message)

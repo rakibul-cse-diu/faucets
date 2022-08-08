@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import useLogin from '../../hooks/useLogin';
+// import useLogin from '../../hooks/useLogin';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SvgSign from '../../assets/undraw_access_account_re_8spm.svg';
@@ -15,31 +15,31 @@ const SignUp = () => {
     const [error, setError] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
 
-    const [login, setLogin] = useLogin();
+    // use Login custom hook for future scope
+    // const [login, setLogin] = useLogin();
 
     const handleSignUp = async (e) => {
         e.preventDefault();
-
         const userData = {
             name: `${firstName} ${lastName}`,
             email,
             password
         }
-
+        // check the password and confrim password is same or not
         if (password !== confrimPassword) {
             setError(true)
         } else {
             setError(false)
             try {
+                // send data to the server for register new user
                 const data = await axios.post("https://vast-mountain-66122.herokuapp.com/signup", userData)
-                // setError(false)
                 setErrorMsg('')
-                setLogin(true)
+                // can use login hook in future if needed
+                // setLogin(true)
                 console.log(data)
                 toast.success("Successfully sign up.")
             } catch (error) {
-                // setError(true)
-                setLogin(false)
+                // setLogin(false)
                 setErrorMsg(error.response.data.message)
                 toast.error("Something wrong! Try again.")
             }

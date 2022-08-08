@@ -1,28 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Recaptcha from 'react-recaptcha';
 import ethereum from '../../assets/undraw_ether_re_y7ft.svg'
 
 const RequestCredit = () => {
-    const [load, setload] = useState(false);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setload(true)
-        }, 1500)
-        recaptchaLoaded()
-        resetRecaptcha()
-    }, [])
-
-    const recaptchaLoaded = () => {
-        console.log("loaded");
-    }
-
-    let recaptchaInstance;
-
-    const resetRecaptcha = () => {
-        recaptchaInstance.reset();
-    };
-
     return (
         <div className='px-10 py-5'>
             <div className='flex'>
@@ -43,8 +23,6 @@ const RequestCredit = () => {
                         <Recaptcha
                             sitekey="6LdA3FUhAAAAALMg-rcpxtmddve1j2frJv61JKao"
                             render="explicit"
-                            ref={e => recaptchaInstance = e}
-                        //  onloadCallback={recaptchaLoaded}
                         />
                         <button className='mt-5 btn bg-gradient-to-r from-primary to-secondary capitalize text-white outline-none border-none'>Send Request</button>
                     </div>
