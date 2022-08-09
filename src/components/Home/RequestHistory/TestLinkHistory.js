@@ -1,6 +1,9 @@
 import React from 'react';
+import { useContext } from 'react';
+import { TransactionData } from '../Home';
 
 const TestLinkHistory = () => {
+    const history = useContext(TransactionData);
     return (
         <div className='mt-3'>
             <div className="overflow-x-auto">
@@ -32,6 +35,16 @@ const TestLinkHistory = () => {
                             <td>797</td>
                             <td>se4s7er7</td>
                         </tr>
+                        {
+
+                            history.map((d, index) => <tr className='text-center'>
+                                <th>{4 + index}</th>
+                                <td>{d.time}</td>
+                                <td>{d.amount}</td>
+                                <td>{d.walletaddress}</td>
+                            </tr>)
+
+                        }
                     </tbody>
                 </table>
             </div>

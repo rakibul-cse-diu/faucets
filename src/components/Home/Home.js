@@ -1,17 +1,24 @@
 import React from 'react';
+import { useState } from 'react';
+import { createContext } from 'react';
 import Hero from './Hero';
 import RequestCredit from './RequestCredit';
 import RequestHistory from './RequestHistory/RequestHistory';
 
-const Home = () => {
+export const TransactionData = createContext([]);
+
+const Home = ({ wallet, allWallet }) => {
+    const [history, setHistory] = useState([]);
     return (
-        <div>
-            <Hero />
-            <div className='bg-[#EEF2FE] pb-10'>
-                <RequestCredit />
-                <RequestHistory />
+        <TransactionData.Provider value={history}>
+            <div>
+                <Hero />
+                <div className='bg-[#EEF2FE] pb-10'>
+                    <RequestCredit setHistory={setHistory} />
+                    <RequestHistory />
+                </div>
             </div>
-        </div>
+        </TransactionData.Provider>
     );
 };
 

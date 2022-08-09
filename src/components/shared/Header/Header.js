@@ -1,15 +1,18 @@
 import React from 'react';
-import { walletData } from '../../../walletData/walletData';
 import metamsk from '../../../assets/icons/MetaMask_Fox.png';
 import walletConnect from '../../../assets/icons/walletconnect-logo.png';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { WalletContext } from '../../../App';
 
-const Header = ({ wallet, setWallet }) => {
+const Header = ({ wallet, setWallet, allWallet }) => {
+    const wal = useContext(WalletContext)
 
+    console.log(wal)
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">
-                <a href='http://localhost:3000/'>
+                <a href='https://effortless-puffpuff-df503a.netlify.app'>
                     <span className="btn btn-ghost normal-case text-2xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Faucets</span>
                 </a>
             </div>
@@ -17,17 +20,25 @@ const Header = ({ wallet, setWallet }) => {
                 <div className="dropdown dropdown-end border-[2px] border-[#D6D6D6] rounded-md">
                     <label tabIndex="0" className="btn bg-transparent hover:bg-transparent border-none outline-none">
                         <div className="flex justify-center items-center">
-                            <img src={wallet.img} alt="" height={15} width={15} className="inline-block" />
-                            <span className="capitalize hidden md:inline-block text-accent ml-1">{wallet.name}</span>
-                            <svg className="fill-current hidden md:inline" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                            {
+                                wallet?.name ? <>
+                                    <img src={wallet?.img} alt="" height={15} width={15} className="inline-block" />
+                                    <span className="capitalize hidden md:inline-block text-accent ml-1">{wallet?.name}</span>
+                                    <svg className="fill-current hidden md:inline" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                                </> : <>
+                                    <img src={allWallet[0]?.img} alt="" height={15} width={15} className="inline-block" />
+                                    <span className="capitalize hidden md:inline-block text-accent ml-1">{allWallet[0]?.name}</span>
+                                    <svg className="fill-current hidden md:inline" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                                </>
+                            }
                         </div>
                     </label>
                     <div tabIndex="0" className="mt-3 relative left-1 card card-compact dropdown-content w-52 bg-base-100 shadow">
                         <div className="card-body justify-start items-start">
                             {
-                                walletData.map((wallet, index) => <div className="flex justify-center items-center mt-2 cursor-pointer" onClick={() => setWallet(walletData[index])} key={index}>
-                                    <img src={wallet.img} alt="" height={15} width={15} className="h-6 w-6 inline-block" />
-                                    <span className="capitalize ml-1">{wallet.name}</span>
+                                allWallet.map((wallet, index) => <div className="flex justify-center items-center mt-2 cursor-pointer" onClick={() => setWallet(allWallet[index])} key={index}>
+                                    <img src={wallet?.img} alt="" height={15} width={15} className="h-6 w-6 inline-block" />
+                                    <span className="capitalize ml-1">{wallet?.name}</span>
                                 </div>)
                             }
                         </div>
